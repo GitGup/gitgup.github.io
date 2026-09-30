@@ -15,7 +15,7 @@
         <a href="#research">Research</a>
         <a href="#publications">Papers</a>
         <a href="#talks">Talks</a>
-        <a href="projects.html">Projects</a>
+        <a href="projects.html">Personal Projects</a>
       </nav>
     </div>
   </header>
@@ -25,7 +25,8 @@
       <div class="hero-text">
         <p class="eyebrow">Physics · Machine Learning · Bayesian Inference</p>
         <h1>Gurpreet (Gup) Singh</h1>
-        <p class="lede">Physics researcher at UC Berkeley focused on computational methods for particle physics, including machine learning, Bayesian inference, and scientific computing.</p>
+        <p class="lede">Physics researcher at UC Berkeley and Lawrence Berkeley National Laboratory focused on computational methods for particle physics, including machine learning, Bayesian inference, and scientific computing.</p>
+        <p class="bio">I studied physics at UC Berkeley and have continued working across experimental particle physics and theory.</p>
         <div class="links">
           <a href="resume.pdf">Resume</a>
           <a href="https://scholar.google.com/citations?user=t5-7yvoAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
@@ -34,25 +35,52 @@
         </div>
       </div>
       <div class="portrait-wrap">
-        <img class="portrait" src="assets/profile-placeholder.svg" alt="Portrait placeholder for Gurpreet Singh">
-        <p class="photo-note">Replace with <code>assets/profile.jpg</code> when ready.</p>
+        <img class="portrait" src="assets/profile_picture.jpeg" alt="Gurpreet (Gup) Singh">
       </div>
     </section>
 
     <section class="section wrap" id="research">
-      <h2>Research</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Bayesian inference & sampling</h3>
-          <p>Benchmarking Hamiltonian Monte Carlo and microcanonical Langevin Monte Carlo for high-dimensional experimental likelihoods, with emphasis on convergence, posterior agreement, effective sample size, and computational scaling.</p>
+      <h2>Selected Research</h2>
+      <div class="research-list">
+        <article class="research-item">
+          <figure class="research-media research-media-figure">
+            <picture>
+              <source srcset="assets/cupid-scaling.webp" type="image/webp">
+              <img src="assets/cupid-scaling.png" alt="Log-scale plot of signal effective sample size per wall-clock second against number of datasets (1 to 28) for four samplers. HMC is highest up to 16 datasets, the MCLMC block variant is the flattest and highest at 28, and Metropolis–Hastings is lowest throughout." width="1000" height="714" loading="lazy">
+            </picture>
+            <figcaption>Signal parameter effective sample size per second of wall time vs. number of datasets, for MH and HMC (BAT.jl) and MCLMC (original and my block variant) on CUORE data.</figcaption>
+          </figure>
+          <div class="research-copy">
+            <h3>Bayesian Sampling for CUORE and CUPID</h3>
+            <p>Adapted microcanonical Langevin Monte Carlo (MCLMC) to experimental likelihoods, with my own implementation and parameter transformation, and developed a block variant. Benchmarked both against Metropolis-Hastings and HMC in BAT.jl on CUORE data: posterior agreement, convergence, effective sample size per wall-clock second, and scaling with the number of datasets.</p>
+          </div>
         </article>
-        <article class="card">
-          <h3>Machine learning for particle physics</h3>
-          <p>Worked on weakly supervised anomaly detection using large simulated collider datasets and NERSC GPU systems. This research resulted in a Physical Review Letters publication and an invited ML4Jets talk at Caltech.</p>
+
+        <article class="research-item research-item-reverse">
+          <figure class="research-media research-media-figure">
+            <video id="paws-fig" autoplay muted loop playsinline preload="metadata" poster="assets/paws-loss-landscape-poster.jpg" width="1200" height="1240" aria-label="Loss-landscape visualization from my work on PAWS: a 3D loss surface over weights W1 and W2.">
+              <source src="assets/paws-loss-landscape.mp4" type="video/mp4">
+            </video>
+            <figcaption>Loss landscape visualization from my work on PAWS.
+              <button type="button" id="paws-toggle" aria-pressed="false">Pause animation</button>
+            </figcaption>
+          </figure>
+          <div class="research-copy">
+            <h3>PAWS: Weakly Supervised Anomaly Detection</h3>
+            <p>PAWS extends cross-section sensitivity by a factor of 10 over previous weakly supervised anomaly detection methods on the LHC Olympics benchmark, and remains robust to added irrelevant features. I implemented and benchmarked the weakly supervised classifiers, processing over 100 million simulated QCD events on NERSC GPU clusters. The research was published in <em>Physical Review Letters</em>, and I presented it in an invited talk at ML4Jets 2025 at Caltech.</p>
+            <div class="research-links">
+              <a href="https://arxiv.org/abs/2405.08889" target="_blank" rel="noreferrer">arXiv ↗</a>
+              <a href="https://journals.aps.org/prl/abstract/10.1103/8259-wt5p" target="_blank" rel="noreferrer">Journal ↗</a>
+              <a href="https://github.com/stanford-ai4physics/PAWS" target="_blank" rel="noreferrer">Code (PAWS) ↗</a>
+            </div>
+          </div>
         </article>
-        <article class="card">
-          <h3>Theory & phenomenology</h3>
-          <p>Computational research in supersymmetry and chiral gauge theories, including Bayesian model studies and numerical methods contributing to two Physical Review D publications.</p>
+
+        <article class="research-item research-item-text">
+          <div class="research-copy">
+            <h3>Bayesian Supersymmetry</h3>
+            <p>Ongoing work with Hitoshi Murayama on Bayesian parameter inference for supersymmetric models (CMSSM, GSUGRA and AMSB). Starting from high scale parameters, the renormalization group equations determine the sparticle spectrum, which is compared with experimental data to infer the supersymmetry breaking scale and the other model parameters.</p>
+          </div>
         </article>
       </div>
     </section>
@@ -65,19 +93,19 @@
       <div class="pub-list">
         <article class="pub">
           <h3>Incorporating Physical Priors into Weakly Supervised Anomaly Detection</h3>
-          <p><em>Physical Review Letters</em> · Machine learning / statistics</p>
+          <p><strong><em>Physical Review Letters</em></strong> · Machine learning / statistics · <a href="https://arxiv.org/abs/2405.08889" target="_blank" rel="noreferrer">arXiv →</a> · <a href="https://journals.aps.org/prl/abstract/10.1103/8259-wt5p" target="_blank" rel="noreferrer">Journal →</a> · <a href="https://github.com/stanford-ai4physics/PAWS" target="_blank" rel="noreferrer">Code →</a></p>
         </article>
         <article class="pub">
           <h3>Generator Based Inference</h3>
-          <p><em>Data Science in Science</em> · Machine learning / statistics</p>
+          <p>Preprint, under review at <strong><em>Data Science in Science</em></strong> · Machine learning / statistics · <a href="https://arxiv.org/abs/2506.00119" target="_blank" rel="noreferrer">arXiv →</a></p>
         </article>
         <article class="pub">
-          <h3>Exact Results in Chiral Gauge Theories with Flavor</h3>
-          <p><em>Physical Review D</em> · Theoretical physics</p>
+          <h3>Exact Results in Softly Broken Supersymmetric Chiral Gauge Theories with Flavor</h3>
+          <p><strong><em>Physical Review D</em></strong> · Theoretical physics · <a href="https://arxiv.org/pdf/2503.08772" target="_blank" rel="noreferrer">arXiv →</a> · <a href="https://journals.aps.org/prd/abstract/10.1103/wvb3-gybj" target="_blank" rel="noreferrer">Journal →</a></p>
         </article>
         <article class="pub">
           <h3>Dynamics of E<sub>6</sub> Chiral Gauge Theories</h3>
-          <p><em>Physical Review D</em> · Theoretical physics</p>
+          <p><strong><em>Physical Review D</em></strong> · Theoretical physics · <a href="https://arxiv.org/pdf/2505.07931" target="_blank" rel="noreferrer">arXiv →</a> · <a href="https://journals.aps.org/prd/abstract/10.1103/cksl-66x7" target="_blank" rel="noreferrer">Journal →</a></p>
         </article>
       </div>
     </section>
@@ -86,23 +114,50 @@
       <h2>Talks</h2>
       <article class="talk">
         <div>
-          <h3>ML4Jets</h3>
-          <p>California Institute of Technology · Pasadena, CA</p>
+          <h3>Scalable Bayesian Inference with CUORE Data</h3>
+          <p>BUQ Meeting · with Tong Zhu</p>
+          <p><a href="https://conferences.lbl.gov/event/2545/contributions/12421/attachments/6417/6991/BUQ_2608.pdf" target="_blank" rel="noreferrer">Slides ↗</a></p>
+        </div>
+        <time datetime="2026-08">August 2026</time>
+      </article>
+      <article class="talk">
+        <div>
+          <h3>Incorporating Physical Priors into Weakly-Supervised Anomaly Detection</h3>
+          <p>ML4Jets · California Institute of Technology, Pasadena, CA</p>
           <p>Invited talk on weakly supervised machine learning for anomaly detection in particle physics.</p>
+          <p><a href="https://indico.cern.ch/event/1526677/timetable/?print=1&amp;view=standard#58-incorporating-physical-prio" target="_blank" rel="noreferrer">Talk ↗</a></p>
         </div>
         <time datetime="2025-08">August 2025</time>
       </article>
     </section>
 
-    <section class="section wrap" id="bio">
-      <h2>Bio</h2>
-      <p class="bio">I studied physics at UC Berkeley and have continued working across experimental particle physics, theory, statistical inference, and scientific machine learning. I am especially interested in computational methods that make difficult inference problems tractable and measurable.</p>
-    </section>
   </main>
 
   <footer class="wrap footer">
     <span>Gurpreet (Gup) Singh</span>
     <span>Berkeley, California</span>
   </footer>
+  <script>
+    (function () {
+      var video = document.getElementById('paws-fig');
+      var btn = document.getElementById('paws-toggle');
+      if (!video || !btn) return;
+      function sync() {
+        var paused = video.paused;
+        btn.textContent = paused ? 'Play animation' : 'Pause animation';
+        btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      }
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        video.removeAttribute('autoplay');
+        video.pause();
+      }
+      btn.addEventListener('click', function () {
+        if (video.paused) { video.play(); } else { video.pause(); }
+      });
+      video.addEventListener('play', sync);
+      video.addEventListener('pause', sync);
+      sync();
+    })();
+  </script>
 </body>
 </html>
