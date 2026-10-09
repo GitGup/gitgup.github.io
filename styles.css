@@ -5,6 +5,7 @@
 .research-media-figure img,.research-media-figure video{display:block;width:100%;max-width:100%;height:auto;max-height:560px;object-fit:contain;border:1px solid var(--line)}
 .research-media-figure{min-width:0}.research-media-figure video{aspect-ratio:1200/1240;max-height:none;background:#fff}
 .research-media-figure figcaption{margin-top:8px;font-size:.8rem;color:var(--muted)}
+.research-media-figure .figure-note{display:block;margin-top:.4em;font-style:italic}
 .research-media-figure button{margin-left:10px;padding:0;border:0;background:none;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .talk+.talk{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
 .research-item-text{display:block}.research-item-text .research-copy{max-width:65ch}
