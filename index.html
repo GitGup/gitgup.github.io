@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gurpreet (Gup) Singh</title>
   <meta name="description" content="Gurpreet (Gup) Singh — physics researcher working on machine learning, Bayesian inference, and scientific computing.">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=ddf26a7a1e53">
 </head>
 <body>
   <header class="site-header">
@@ -15,7 +15,6 @@
         <a href="#research">Research</a>
         <a href="#publications">Papers</a>
         <a href="#talks">Talks</a>
-        <a href="projects.html">Personal Projects</a>
       </nav>
     </div>
   </header>
@@ -26,12 +25,13 @@
         <p class="eyebrow">Physics · Machine Learning · Bayesian Inference</p>
         <h1>Gurpreet (Gup) Singh</h1>
         <p class="lede">Physics researcher at UC Berkeley and Lawrence Berkeley National Laboratory focused on computational methods for particle physics, including machine learning, Bayesian inference, and scientific computing.</p>
-        <p class="bio">I studied physics at UC Berkeley and have continued working across experimental particle physics and theory.</p>
+        <p class="bio">My work spans theory, experiment, and machine learning, from strongly coupled gauge theories to real-time experimental hardware.</p>
         <div class="links">
           <a href="resume.pdf">Resume</a>
           <a href="https://scholar.google.com/citations?user=t5-7yvoAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
           <a href="https://inspirehep.net/authors/2796874?ui-citation-summary=true" target="_blank" rel="noreferrer">INSPIRE</a>
           <a href="https://www.linkedin.com/in/gupsingh/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="mailto:gupsingh@berkeley.edu">Email</a>
         </div>
       </div>
       <div class="portrait-wrap">
@@ -42,45 +42,72 @@
     <section class="section wrap" id="research">
       <h2>Selected Research</h2>
       <div class="research-list">
-        <article class="research-item">
+        <article class="research-item research-card">
+          <div class="research-copy">
+            <h3>Scalable Bayesian Inference for Experiments</h3>
+            <p class="research-question"><em>Why is the universe made of matter instead of antimatter?</em></p>
+            <p>CUORE and CUPID search for neutrinoless double beta decay, a process that would show nature doesn't conserve lepton number, a key ingredient in leading explanations for why matter won out over antimatter. Finding that signal means sampling a posterior with over a hundred parameters across dozens of datasets, and standard samplers slow down sharply as data grows. My exact block gradient method exploits the likelihood's structure so the cost grows linearly rather than quadratically with the number of datasets.</p>
+          </div>
           <figure class="research-media research-media-figure">
             <picture>
               <source srcset="assets/cupid-scaling.webp" type="image/webp">
-              <img src="assets/cupid-scaling.png" alt="Log-scale plot of signal effective sample size per wall-clock second against number of datasets (1 to 28) for four samplers. HMC is highest up to 16 datasets, the MCLMC block variant is the flattest and highest at 28, and Metropolis–Hastings is lowest throughout." width="1000" height="714" loading="lazy">
+              <img class="research-plot" src="assets/cupid-scaling.png" alt="Log-scale plot of signal effective sample size per wall-clock second against number of datasets (1 to 28) for four samplers. HMC is highest up to 16 datasets, the MCLMC block variant is the flattest and highest at 28, and Metropolis–Hastings is lowest throughout." width="1000" height="714" loading="lazy">
             </picture>
-            <figcaption>Signal parameter effective sample size per second of wall time vs. number of datasets, for MH and HMC (BAT.jl) and MCLMC (original and my block variant) on CUORE data.</figcaption>
+            <p class="research-key-result"><strong>The block gradient MCLMC sampler showed the best scaling of all samplers tested.</strong></p>
+            <figcaption>Signal effective sample size per second of wall time vs. number of datasets, for MH and HMC (BAT.jl) and MCLMC (original and my block gradient variant) on CUORE data. Joint work with Tong Zhu.</figcaption>
           </figure>
-          <div class="research-copy">
-            <h3>Bayesian Sampling for CUORE and CUPID</h3>
-            <p>Adapted microcanonical Langevin Monte Carlo (MCLMC) to experimental likelihoods, with my own implementation and parameter transformation, and developed a block variant. Benchmarked both against Metropolis-Hastings and HMC in BAT.jl on CUORE data: posterior agreement, convergence, effective sample size per wall-clock second, and scaling with the number of datasets.</p>
-          </div>
         </article>
 
-        <article class="research-item research-item-reverse">
+        <article class="research-item research-card">
+          <div class="research-copy">
+            <h3>Machine Learning for New Physics Searches</h3>
+            <p class="research-question"><em>How do you search for new physics when you don't know what it looks like?</em></p>
+            <p>Weakly supervised anomaly detection can search for new physics without specifying exactly what it looks like, but it loses sensitivity when the signal is rare or the data has many irrelevant features. PAWS builds knowledge of a broad class of signal models into the search, matching the sensitivity of a fully supervised search without fixing the signal's parameters in advance. Benchmarked on over 100 million simulated events on NERSC GPUs, the work was published in <em>Physical Review Letters</em>, and I presented it in an invited talk at ML4Jets 2025. Our follow up paper, Generator Based Inference (under review), extends the approach to estimating physical parameters and their uncertainties.</p>
+            <div class="research-links">
+              <a href="https://arxiv.org/abs/2405.08889" target="_blank" rel="noreferrer">arXiv ↗</a>
+              <a href="https://journals.aps.org/prl/abstract/10.1103/8259-wt5p" target="_blank" rel="noreferrer">Journal ↗</a>
+              <a href="https://github.com/stanford-ai4physics/PAWS" target="_blank" rel="noreferrer">Code ↗</a>
+            </div>
+          </div>
           <figure class="research-media research-media-figure">
             <video id="paws-fig" autoplay muted loop playsinline preload="metadata" poster="assets/paws-loss-landscape-poster.jpg" width="1200" height="1240" aria-label="Loss-landscape visualization from my work on PAWS: a 3D loss surface over weights W1 and W2.">
               <source src="assets/paws-loss-landscape.mp4" type="video/mp4">
             </video>
-            <figcaption>Loss landscape visualization from my work on PAWS.
+            <p class="research-key-result"><strong>10× gain in cross section sensitivity over previous weakly supervised methods.</strong></p>
+            <figcaption>PAWS loss landscape over the two signal mass parameters as the injected signal fraction varies. The deep minimum marks the true signal masses; as the signal gets rarer, it fades into background fluctuations.
               <button type="button" id="paws-toggle" aria-pressed="false">Pause animation</button>
             </figcaption>
           </figure>
+        </article>
+
+        <article class="research-item research-card research-card-text">
           <div class="research-copy">
-            <h3>PAWS: Weakly Supervised Anomaly Detection</h3>
-            <p>PAWS extends cross-section sensitivity by a factor of 10 over previous weakly supervised anomaly detection methods on the LHC Olympics benchmark, and remains robust to added irrelevant features. I implemented and benchmarked the weakly supervised classifiers, processing over 100 million simulated QCD events on NERSC GPU clusters. The research was published in <em>Physical Review Letters</em>, and I presented it in an invited talk at ML4Jets 2025 at Caltech.</p>
+            <h3>Symmetry Breaking and the Origin of Mass</h3>
+            <p class="research-question"><em>If supersymmetry exists, how and at what energy was it broken, and why do fermions have such different masses?</em></p>
+            <p>Supersymmetry could explain why the Higgs boson is so light, but if it exists it must be broken, and how and at what energy that happens determines what experiments can see. Because the breaking must also respect the observed pattern of quark and lepton masses and mixings, it connects to the puzzle of why fermion masses differ so dramatically. Strongly coupled chiral gauge theories resist direct calculation, but starting from their supersymmetric versions and gently breaking supersymmetry with anomaly mediation makes their symmetry breaking patterns calculable, even for exceptional groups like E<sub>6</sub>. Ongoing work takes the data driven route: a Bayesian analysis that runs the renormalization group from the Planck scale to the weak scale and confronts the predicted spectrum, Higgs mass, and flavor constraints with data to infer the breaking scale.</p>
             <div class="research-links">
-              <a href="https://arxiv.org/abs/2405.08889" target="_blank" rel="noreferrer">arXiv ↗</a>
-              <a href="https://journals.aps.org/prl/abstract/10.1103/8259-wt5p" target="_blank" rel="noreferrer">Journal ↗</a>
-              <a href="https://github.com/stanford-ai4physics/PAWS" target="_blank" rel="noreferrer">Code (PAWS) ↗</a>
+              <span>Chiral gauge theories with flavor:
+                <a href="https://arxiv.org/pdf/2503.08772" target="_blank" rel="noreferrer">arXiv&nbsp;↗</a>
+                <a href="https://journals.aps.org/prd/abstract/10.1103/wvb3-gybj" target="_blank" rel="noreferrer">Journal&nbsp;↗</a>
+                &nbsp;·&nbsp; E<sub>6</sub> chiral gauge theories:
+                <a href="https://arxiv.org/pdf/2505.07931" target="_blank" rel="noreferrer">arXiv&nbsp;↗</a>
+                <a href="https://journals.aps.org/prd/abstract/10.1103/cksl-66x7" target="_blank" rel="noreferrer">Journal&nbsp;↗</a>
+              </span>
             </div>
           </div>
         </article>
 
-        <article class="research-item research-item-text">
+        <article class="research-item research-card">
           <div class="research-copy">
-            <h3>Bayesian Supersymmetry</h3>
-            <p>Ongoing work with Hitoshi Murayama on Bayesian parameter inference for supersymmetric models (CMSSM, GSUGRA and AMSB). Starting from high scale parameters, the renormalization group equations determine the sparticle spectrum, which is compared with experimental data to infer the supersymmetry breaking scale and the other model parameters.</p>
+            <h3>Real-Time Instrumentation</h3>
+            <p class="research-question"><em>How precisely can we test the Standard Model?</em></p>
+            <p>MOLLER will measure the weak force between electrons precisely enough to probe physics beyond the Standard Model, which demands fast readout with very little noise. In Yury Kolomensky's group, we tested whether an AMD RFSoC 4x2 could serve as MOLLER's real-time data acquisition system, probing its signal chain, including digital down conversion, and its limits: noise against thermal and quantization floors, intermodulation distortion, and crosstalk between channels. The project was part of AMD's Open Hardware Adaptive Computing competition.</p>
           </div>
+          <figure class="research-media research-media-figure">
+            <img class="research-plot" src="assets/adc-noise-psd.png" alt="ADC noise power spectral density versus frequency, showing the measured baseline and sharp spurious peaks above Johnson and ideal quantization noise reference levels." width="2647" height="2046" loading="lazy">
+            <p class="research-key-result"><strong>Measured ~10.6 effective bits on the RFSoC's 14 bit ADC.</strong></p>
+            <figcaption>Measured ADC noise spectrum of the RFSoC prototype, compared with Johnson noise and ideal quantization noise. Sharp peaks are spurious tones.</figcaption>
+          </figure>
         </article>
       </div>
     </section>
@@ -93,18 +120,22 @@
       <div class="pub-list">
         <article class="pub">
           <h3>Incorporating Physical Priors into Weakly Supervised Anomaly Detection</h3>
+          <p class="pub-authors">Chi Lung Cheng, <strong>G. Singh</strong>, Benjamin Nachman</p>
           <p><strong><em>Physical Review Letters</em></strong> · Machine learning / statistics · <a href="https://arxiv.org/abs/2405.08889" target="_blank" rel="noreferrer">arXiv →</a> · <a href="https://journals.aps.org/prl/abstract/10.1103/8259-wt5p" target="_blank" rel="noreferrer">Journal →</a> · <a href="https://github.com/stanford-ai4physics/PAWS" target="_blank" rel="noreferrer">Code →</a></p>
         </article>
         <article class="pub">
           <h3>Generator Based Inference</h3>
+          <p class="pub-authors">Chi Lung Cheng, Ranit Das, Runze Li, Radha Mastandrea, Vinicius Mikuni, Benjamin Nachman, David Shih, <strong>G. Singh</strong></p>
           <p>Preprint, under review at <strong><em>Data Science in Science</em></strong> · Machine learning / statistics · <a href="https://arxiv.org/abs/2506.00119" target="_blank" rel="noreferrer">arXiv →</a></p>
         </article>
         <article class="pub">
           <h3>Exact Results in Softly Broken Supersymmetric Chiral Gauge Theories with Flavor</h3>
+          <p class="pub-authors">Jacob M. Leedom, Hitoshi Murayama, <strong>G. Singh</strong>, Bethany Suter, Jason Wong</p>
           <p><strong><em>Physical Review D</em></strong> · Theoretical physics · <a href="https://arxiv.org/pdf/2503.08772" target="_blank" rel="noreferrer">arXiv →</a> · <a href="https://journals.aps.org/prd/abstract/10.1103/wvb3-gybj" target="_blank" rel="noreferrer">Journal →</a></p>
         </article>
         <article class="pub">
           <h3>Dynamics of E<sub>6</sub> Chiral Gauge Theories</h3>
+          <p class="pub-authors">Andrew Goh, Hitoshi Murayama, <strong>G. Singh</strong>, Bethany Suter, Jason Wong</p>
           <p><strong><em>Physical Review D</em></strong> · Theoretical physics · <a href="https://arxiv.org/pdf/2505.07931" target="_blank" rel="noreferrer">arXiv →</a> · <a href="https://journals.aps.org/prd/abstract/10.1103/cksl-66x7" target="_blank" rel="noreferrer">Journal →</a></p>
         </article>
       </div>
