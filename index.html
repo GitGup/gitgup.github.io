@@ -82,11 +82,11 @@
           </figure>
         </article>
 
-        <article class="research-item research-card research-card-text">
+        <article class="research-item research-card">
           <div class="research-copy">
             <h3>Symmetry Breaking and the Origin of Mass</h3>
             <p class="research-question"><em>If supersymmetry exists, how and at what energy was it broken, and why do fermions have such different masses?</em></p>
-            <p>Quantum field theory lets physics at the highest energies be traced down to what we can measure today. Supersymmetry could explain why the Higgs boson is so light, but if it exists it must be broken, and how and at what energy that happens determines what experiments can see. Because the breaking must also respect the observed pattern of quark and lepton masses and mixings, it connects to the puzzle of why fermion masses differ so dramatically. Strongly coupled chiral gauge theories resist direct calculation, but starting from their supersymmetric versions and gently breaking supersymmetry with anomaly mediation makes their symmetry breaking patterns calculable, even for exceptional groups like E<sub>6</sub>. Ongoing work takes the data driven route: a Bayesian analysis that uses the renormalization group to evolve each model from the Planck scale down to the weak scale, across about seventeen orders of magnitude in energy, then confronts the predicted spectrum, Higgs mass, and flavor constraints with data to infer the supersymmetry breaking scale.</p>
+            <p>Quantum field theory lets physics at the highest energies be traced down to what we can measure today. Supersymmetry could explain why the Higgs boson is so light, but if it exists it must be broken, and how and at what energy that happens determines what experiments can see. Because the breaking must also respect the observed pattern of quark and lepton masses and mixings, it connects to the puzzle of why fermion masses differ so dramatically. Strongly coupled chiral gauge theories resist direct calculation, but starting from their supersymmetric versions and gently breaking supersymmetry with anomaly mediation makes their symmetry breaking patterns calculable, even for exceptional groups like E<sub>6</sub>. Ongoing work takes the data driven route: a Bayesian analysis that uses the renormalization group to evolve each model from high scale boundary conditions near the GUT scale down to the weak scale, across about fourteen orders of magnitude in energy, then confronts the predicted spectrum, Higgs mass, and flavor constraints with data to infer the supersymmetry breaking scale.</p>
             <div class="research-links">
               <span>Chiral gauge theories with flavor:
                 <a href="https://arxiv.org/pdf/2503.08772" target="_blank" rel="noreferrer">arXiv&nbsp;↗</a>
@@ -97,13 +97,17 @@
               </span>
             </div>
           </div>
+          <figure class="research-media research-media-figure">
+            <img src="assets/GSUGRA_literature.png" alt="Renormalization group evolution of masses in an illustrative GSUGRA scenario from the GUT scale down to 1 TeV." width="590" height="390" loading="lazy">
+            <figcaption>Illustrative example: superpartner masses in a GSUGRA scenario, evolved by the renormalization group from the GUT scale down to 1 TeV.</figcaption>
+          </figure>
         </article>
 
         <article class="research-item research-card">
           <div class="research-copy">
             <h3>Real-Time Instrumentation</h3>
             <p class="research-question"><em>How precisely can we test the Standard Model?</em></p>
-            <p>MOLLER will measure the weak force between electrons precisely enough to probe physics beyond the Standard Model, which demands fast readout with very little noise. In Yury Kolomensky's group, we tested whether an AMD RFSoC 4x2 could serve as MOLLER's real-time data acquisition system, probing its signal chain, including digital down conversion, and its limits: noise against thermal and quantization floors, intermodulation distortion, and crosstalk between channels. The project was part of AMD's Open Hardware Adaptive Computing competition.</p>
+            <p>I evaluated an AMD RFSoC 4x2 (an FPGA with integrated RF converters) as a candidate real-time readout for the MOLLER experiment, configuring its digital down conversion and measuring its noise floor (about 10.6 effective bits on its 14 bit ADC), intermodulation distortion, and crosstalk.</p>
           </div>
           <figure class="research-media research-media-figure">
             <img class="research-plot" src="assets/adc-noise-psd.png" alt="ADC noise power spectral density versus frequency, showing the measured baseline and sharp spurious peaks above Johnson and ideal quantization noise reference levels." width="2647" height="2046" loading="lazy">
